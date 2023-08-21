@@ -103,6 +103,7 @@ export const LoginForm = () => {
                     onClick={onClickShowPassword}
                     onMouseDown={onMouseDownPassword}
                     edge="end"
+                    tabIndex={-1}
                   >
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>

@@ -99,6 +99,7 @@ export const RegisterForm = (props: RegisterFormProps) => {
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
+                    tabIndex={-1}
                     aria-label="toggle password visibility"
                     onClick={onClickShowPassword}
                     onMouseDown={onMouseDownPassword}
@@ -135,6 +136,7 @@ export const RegisterForm = (props: RegisterFormProps) => {
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
+                    tabIndex={-1}
                     aria-label="toggle password visibility"
                     onClick={onClickShowConfirmPassword}
                     onMouseDown={onMouseDownPassword}
