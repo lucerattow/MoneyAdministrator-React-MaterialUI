@@ -1,6 +1,9 @@
-import React, {ReactNode} from 'react'
+import {ReactNode} from 'react'
+import {useAppContext} from '@/hooks';
+// componentes
 import {Header} from "@/Layout"
-import { Routes, Route } from 'react-router-dom';
+import {NotificationPanel} from "@/Layout"
+// estilos
 import styles from "./LoggedInLayout.module.scss"
 
 interface LoggedInLayoutProps {
@@ -8,6 +11,8 @@ interface LoggedInLayoutProps {
 }
 
 export const LoggedInLayout = ({ children }: LoggedInLayoutProps) => {
+  const {notificationPanelShow} = useAppContext();
+
   return (
     <div className={styles.Layout}>
       <Header />
@@ -19,6 +24,7 @@ export const LoggedInLayout = ({ children }: LoggedInLayoutProps) => {
         <LeftMenu /> */}
         {children}
       </div>
+      <NotificationPanel show={notificationPanelShow} />
     </div>
   );
 }

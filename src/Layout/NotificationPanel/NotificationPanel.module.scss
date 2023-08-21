@@ -1,0 +1,37 @@
+@import "@/styles/index.scss";
+
+.NotificationPanel {
+  position: fixed;
+  z-index: $notification-panel-depth;
+  top: 0;
+  right: 0;
+  border-radius: 0 !important;
+
+  width: $notification-panel-width;
+  height: 100vh;
+
+  transform: translateX(100%); /* inicialmente está fuera de la vista */
+  transition: transform 0.1s ease-out !important; /* animación */
+
+  display: flex;
+  flex-direction: column;
+
+  &_Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: $header-height;
+    padding: 5px 15px;
+  }
+}
+
+.Show {
+  transform: translateX(0);
+}
+
+.Button {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+}

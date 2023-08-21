@@ -10,7 +10,7 @@ export const AppRoutes = () => {
     <Router>
       {user === null
         ? (
-        <LoggedOutLayout>
+          <LoggedOutLayout>
             <Routes>
               <Route path="/" element={<LogIn />} />
               <Route path="/register" element={<Register />} />
@@ -19,7 +19,7 @@ export const AppRoutes = () => {
         ) : (
           <LoggedInLayout>
             <Routes>
-              <Route path="/" element={<LogIn />} />
+              <Route path="/" element={<h1>usuario logeado!</h1>} />
 
               <Route path="*" element={<h1>404 Error, pagina no encontrada</h1>} />
             </Routes>

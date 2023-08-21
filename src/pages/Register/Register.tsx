@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {useForm, Controller, SubmitHandler} from 'react-hook-form';
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+// recursos locales
 import { useAppContext } from '@/hooks'
 import {userRegister, checkIsLogged} from "@/api"
-//componentes
+// componentes
 import {
-  Button,
   Typography,
   Input,
   InputLabel,
@@ -18,10 +18,14 @@ import {
   Paper
 } from '@mui/material';
 import {
+  LoadingButton
+} from "@mui/lab"
+import {
   Visibility,
   VisibilityOff
 } from '@mui/icons-material';
 import {AuthBackground} from '@/components';
+// estilos
 import styles from "./Register.module.scss"
 
 // Definicion de tipos para los datos del formulario
@@ -38,6 +42,7 @@ const schema = yup.object<IFormInput>().shape({
     .required('El correo electrónico es requerido'),
   password: yup.string()
     .min(6, 'La contraseña debe tener al menos 6 caracteres')
+    .matches(/[a-z]/, 'La contraseña debe contener al menos un carácter en minúscula')
     .required('La contraseña es requerida'),
   confirmPassword: yup.string()
     .oneOf([yup.ref('password')], 'Las contraseñas deben coincidir')
@@ -47,6 +52,8 @@ const schema = yup.object<IFormInput>().shape({
 export const Register = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false)
+  const navigate = useNavigate()
   const { setUser } = useAppContext()
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>({
     resolver: yupResolver(schema),
@@ -60,8 +67,10 @@ export const Register = () => {
   };
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    setLoading(true)
     const loggedUser = await userRegister(data.email, data.password)
     loggedUser && setUser(loggedUser);
+    navigate("/")
   };
 
   return (
@@ -165,15 +174,16 @@ export const Register = () => {
               </FormControl>
             )}
           />
-          <Button
+          <LoadingButton
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
+            loading={loading}
             style={{ marginTop: '20px' }}
           >
             Registrarse
-          </Button>
+          </LoadingButton>
         </form>
         <Typography component="p" mt={1}>
           Ya tienes una cuenta?
