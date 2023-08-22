@@ -7,7 +7,6 @@ import {AxiosError} from "@/api"
 
 axios.defaults.withCredentials = true
 
-
 export const checkIsLogged = async () => {
   try {
     const url = `${baseApi}/user/session_check`
@@ -15,29 +14,31 @@ export const checkIsLogged = async () => {
 
     //Si fallo
     if (response.status !== 200) {
-      console.error("checkIsLogged", response)
       return null
     }
 
     const user: userDto = {
       id: response.data.id,
       username: response.data.username,
+      displayName: response.data.displayName,
     }
     return user
 
   } catch (error) {
+    console.error(error)
     return null
   }
 }
 
-export const userRegister = async (username: string, password: string) => {
+export const userRegister = async (username: string, password: string, displayName: string) => {
   const toastId = toast.loading("Registrando usuario...")
 
   try {
     const url = `${baseApi}/user/register`
     const paramsBody = {
       username,
-      password
+      password,
+      displayName
     }
     const response = await axios.post(url, paramsBody)
 
@@ -90,7 +91,8 @@ export const userLogin = async (username: string, password: string) => {
     const url = `${baseApi}/user/login`
     const paramsBody = {
       username,
-      password
+      password,
+      displayName: "",
     }
     const response = await axios.post(url, paramsBody)
 

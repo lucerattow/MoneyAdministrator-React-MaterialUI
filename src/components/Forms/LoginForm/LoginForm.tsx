@@ -46,8 +46,11 @@ export const LoginForm = () => {
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setLoading(true)
     const loggedUser = await userLogin(data.email, data.password)
-    loggedUser && setUser(loggedUser)
-    navigate("/")
+    if (loggedUser) {
+      setUser(loggedUser)
+      navigate("/")
+    }
+    setLoading(false)
   }
 
   return (

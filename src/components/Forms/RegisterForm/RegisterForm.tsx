@@ -45,13 +45,41 @@ export const RegisterForm = (props: RegisterFormProps) => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setLoading(true)
-    const loggedUser = await userRegister(data.email, data.password)
-    loggedUser && setUser(loggedUser);
-    navigate("/")
+    const loggedUser = await userRegister(data.email, data.password, data.displayName)
+    if (loggedUser) {
+      setUser(loggedUser)
+      navigate("/")
+    }
+    setLoading(false)
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <Controller
+        name="displayName"
+        control={control}
+        defaultValue=""
+        render={({ field }) => (
+          <FormControl
+            margin="dense"
+            error={!!errors.displayName}
+            variant="standard"
+            fullWidth
+          >
+            <InputLabel htmlFor="displayName">Nombre de usuario</InputLabel>
+            <Input
+              {...field}
+              id="displayName"
+              name="displayName"
+              autoComplete="displayName"
+              autoFocus
+              error={!!errors.displayName}
+              aria-describedby="displayName-error"
+            />
+            {!!errors.displayName && <FormHelperText id="displayName-error">{errors.displayName?.message}</FormHelperText>}
+          </FormControl>
+        )}
+      />
       <Controller
         name="email"
         control={control}
