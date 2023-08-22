@@ -4,14 +4,20 @@
   position: relative;
   z-index: $header-depth;
   height: $header-height;
-  width: 100vw;
+  //width: 100vw;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
   align-items: center;
-  padding: 5px 15px;
+  // padding: 5px 15px;
 
   border-radius: 0 !important;
   box-shadow: 0 0px 10px 3px rgba(0, 0, 0, 0.2) !important;
+
+  &_right {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
 }
