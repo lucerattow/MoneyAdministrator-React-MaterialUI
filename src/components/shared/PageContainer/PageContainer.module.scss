@@ -1,0 +1,6 @@
+@import "@/styles/index.scss";
+
+.PageContainer {
+  padding: 20px 40px;
+  width: calc(100vw - $left-panel-width);
+}

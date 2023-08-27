@@ -31,12 +31,13 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
   }, [setUser])
 
   const data : AppContextType = {
-    //Estados
+    //states
     user,
     notificationPanelShow,
-    //funciones
+    //setters
     setUser,
     setNotificationPanelShow,
+    //functions
   };
 
   return (

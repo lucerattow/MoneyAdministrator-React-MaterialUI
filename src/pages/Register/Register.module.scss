@@ -14,7 +14,7 @@
   align-items: center;
 
   padding: 20px;
-  width: $left-panel-width;
+  width: $auth-panel-width;
   height: calc(100vh - $header-height);
   border-radius: 0 !important;
 }
@@ -22,15 +22,4 @@
 .Form {
   width: 100%;
   margin-top: 20px;
-}
-
-.BackgroundImage {
-  background-image: url("../../assets/AuthBackground.jpg");
-  flex: 1;
-  // width: calc(100vw - $left-panel-width);
-  // height: calc(100vh - $header-height);
-
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }

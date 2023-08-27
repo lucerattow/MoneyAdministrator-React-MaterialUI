@@ -18,7 +18,9 @@ import {
   NotificationsActive,
   Menu,
   More,
-  CloseRounded
+  CloseRounded,
+  ChevronRight as ChevronRightIcon,
+  ChevronLeft as ChevronLeftIcon,
 } from "@mui/icons-material"
 import {ProfileMenu} from "@/components"
 // estilos
@@ -28,7 +30,7 @@ export const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const {setNotificationPanelShow, user} = useAppContext();
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = 'profile-menu';
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -43,20 +45,10 @@ export const Header = () => {
     setAnchorEl(null);
   };
 
-  //className={styles.Header} bgcolor="background.paper"
   return (
     <Box className={styles.Header}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <Menu />
-          </IconButton>
           <Typography
             variant="h6"
             noWrap
@@ -66,28 +58,37 @@ export const Header = () => {
             Money Administrator
           </Typography>
           <Box sx={{flexGrow: 1}} />
-          <Box>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
+          {user && (
+            <Typography
+              ml={1}
+              mr={1}
+              noWrap
+              component="div"
+              sx={{ display: { xs: 'none', sm: 'block' } }}
             >
-              <Badge badgeContent={17} color="error">
-                <Notifications onClick={handleNotificationsOpen} />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="small"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <Avatar sx={{height: 35, width: 35 }} />
-            </IconButton>
-          </Box>
+              {user.displayName}
+            </Typography>
+          )}
+          <IconButton
+            size="small"
+            edge="end"
+            aria-label="account of current user"
+            aria-controls={menuId}
+            aria-haspopup="true"
+            onClick={handleProfileMenuOpen}
+            color="inherit"
+          >
+            <Avatar sx={{height: 35, width: 35 }} />
+          </IconButton>
+          <IconButton
+            size="large"
+            aria-label="show 17 new notifications"
+            color="inherit"
+          >
+            <Badge badgeContent={17} color="error">
+              <Notifications onClick={handleNotificationsOpen} />
+            </Badge>
+          </IconButton>
         </Toolbar>
       </AppBar>
       {!!user &&

@@ -140,10 +140,8 @@ export const userLogin = async (username: string, password: string) => {
 
 export const userLogout = async () => {
   try {
-    console.log("cerrando sesion")
     const url = `${baseApi}/user/logout`
     await axios.post(url)
-    console.log("sesion cerrada")
   } catch (error) {
     console.log(error)
   }

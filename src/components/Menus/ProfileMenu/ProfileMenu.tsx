@@ -1,4 +1,5 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom"
 // recursos locales
 import {useAppContext} from '@/hooks'
 import {userLogout} from '@/api'
@@ -16,11 +17,13 @@ export type ProfileMenuProps = MenuProps & {
 }
 
 export const ProfileMenu = ({ anchorEl, id, transformOrigin, open, onClose, onClick }: ProfileMenuProps) => {
-  const {setUser} = useAppContext();
+  const {setUser} = useAppContext()
+  const navigate = useNavigate()
 
   const handleLoggout = () => {
     userLogout()
     setUser(null)
+    navigate("/")
   }
 
   return (

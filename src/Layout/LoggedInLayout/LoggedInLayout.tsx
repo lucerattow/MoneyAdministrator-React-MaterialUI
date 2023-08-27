@@ -1,8 +1,9 @@
 import {ReactNode} from 'react'
+// recursos locales
 import {useAppContext} from '@/hooks';
 // componentes
 import {Header} from "@/Layout"
-import {NotificationPanel} from "@/Layout"
+import {NotificationPanel, LeftPanel} from "@/Layout"
 // estilos
 import styles from "./LoggedInLayout.module.scss"
 
@@ -17,11 +18,7 @@ export const LoggedInLayout = ({ children }: LoggedInLayoutProps) => {
     <div className={styles.Layout}>
       <Header />
       <div className={styles.Container}>
-        {/* <Routes>
-          <Route path="/auth" element={<LeftMenu />} />
-          <Route path="/auth/register" element={<LeftMenu />} />
-        </Routes>
-        <LeftMenu /> */}
+        <LeftPanel />
         {children}
       </div>
       <NotificationPanel show={notificationPanelShow} />
