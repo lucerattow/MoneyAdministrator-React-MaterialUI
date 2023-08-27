@@ -1,4 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useAppContext } from '@/hooks'
+import {
+  routeHome,
+  routeRegister,
+  routeTransactions,
+  routeCreditCards,
+  routeCreditCardDetails,
+} from "@/routes"
 import { LoggedOutLayout, LoggedInLayout } from '@/Layout'
 import {
   CreditCardDetails,
@@ -6,7 +14,6 @@ import {
   LogIn,
   Register
 } from '@/pages'
-import { useAppContext } from '@/hooks'
 
 export const AppRoutes = () => {
   const { user } = useAppContext()
@@ -17,8 +24,8 @@ export const AppRoutes = () => {
         ? (
           <LoggedOutLayout>
             <Routes>
-              <Route path="/" element={<LogIn />} />
-              <Route path="/register" element={<Register />} />
+              <Route path={routeHome} element={<LogIn />} />
+              <Route path={routeRegister} element={<Register />} />
 
               <Route path="*" element={<h1>404 Error, pagina no encontrada</h1>} />
             </Routes>
@@ -26,10 +33,10 @@ export const AppRoutes = () => {
         ) : (
           <LoggedInLayout>
             <Routes>
-              <Route path="/" element={<h1>Dashboard</h1>} />
-              <Route path="/credit-cards" element={<CreditCards />} />
-              <Route path="/transactions" element={<h1>Transacciones</h1>} />
-              <Route path="/credit-card-details/:id" element={<CreditCardDetails />} />
+              <Route path={routeHome} element={<h1>Dashboard</h1>} />
+              <Route path={routeCreditCards} element={<CreditCards />} />
+              <Route path={routeTransactions} element={<h1>Transacciones</h1>} />
+              <Route path={routeCreditCardDetails(":id")} element={<CreditCardDetails />} />
 
               <Route path="*" element={<h1>404 Error, pagina no encontrada</h1>} />
             </Routes>

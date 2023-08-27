@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 // recursos locales
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useLocation} from 'react-router-dom';
 // componentes
 import {
   IconButton,
@@ -25,18 +25,21 @@ export type LeftPanelButtonProps = {
   text: string
   icon: React.ReactNode
   to: string
-  onClick?: () => void;
-  selected?: boolean
 }
 
-export const LeftPanelButton = ({text, icon, to, onClick, selected = false}: LeftPanelButtonProps) => {
+export const LeftPanelButton = ({text, icon, to}: LeftPanelButtonProps) => {
 
   const navigate = useNavigate()
+  const location = useLocation();
 
-  const handleNavigate = () => {
-    navigate(to)
-    onClick && onClick()
+  const isSelected = () => {
+    if (to === "/") {
+      return location.pathname === "/"
+    }
+    return location.pathname.startsWith(to)
   }
+
+  const handleNavigate = () => navigate(to)
 
   return (
     <ListItemButton
@@ -46,7 +49,7 @@ export const LeftPanelButton = ({text, icon, to, onClick, selected = false}: Lef
         px: 2.5,
       }}
       onClick={handleNavigate}
-      selected={selected}
+      selected={isSelected()}
     >
       <ListItemIcon
         sx={{

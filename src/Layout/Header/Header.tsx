@@ -1,13 +1,11 @@
-import {useState} from "react"
+import { useState } from "react"
 // recursos locales
-import {useAppContext} from '@/hooks'
-import {userLogout} from '@/api'
+import { useAppContext } from '@/hooks'
 // componentes
 import {
   AppBar,
   IconButton,
   Box,
-  Button,
   Typography,
   Avatar,
   Badge,
@@ -16,13 +14,8 @@ import {
 import {
   Notifications,
   NotificationsActive,
-  Menu,
-  More,
-  CloseRounded,
-  ChevronRight as ChevronRightIcon,
-  ChevronLeft as ChevronLeftIcon,
 } from "@mui/icons-material"
-import {ProfileMenu} from "@/components"
+import { ProfileMenu } from "@/components"
 // estilos
 import styles from "./Header.module.scss"
 

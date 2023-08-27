@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import {useForm, Controller, SubmitHandler} from 'react-hook-form';
-import {useNavigate} from "react-router-dom"
-import {yupResolver} from '@hookform/resolvers/yup';
+import React, { useState } from 'react';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { useNavigate } from "react-router-dom"
+import { yupResolver } from '@hookform/resolvers/yup';
 // recursos locales
+import { routeHome } from "@/routes"
 import { useAppContext } from '@/hooks'
-import {userRegister} from "@/api"
+import { userRegister } from "@/api"
 // componentes
 import {
   Input,
@@ -22,11 +23,9 @@ import {
   VisibilityOff
 } from '@mui/icons-material';
 // logica del componente
-import {IFormInput, validationSchema} from "./RegisterForm.Validations"
+import { IFormInput, validationSchema } from "./RegisterForm.Validations"
 
-export type RegisterFormProps = {}
-
-export const RegisterForm = (props: RegisterFormProps) => {
+export const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false)
@@ -48,7 +47,7 @@ export const RegisterForm = (props: RegisterFormProps) => {
     const loggedUser = await userRegister(data.email, data.password, data.displayName)
     if (loggedUser) {
       setUser(loggedUser)
-      navigate("/")
+      navigate(routeHome)
     }
     setLoading(false)
   };

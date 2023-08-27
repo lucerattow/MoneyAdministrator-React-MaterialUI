@@ -1,19 +1,19 @@
-import React, {useState, useEffect} from 'react'
-import {useForm, Controller, SubmitHandler} from 'react-hook-form'
-import {Link, useNavigate} from "react-router-dom"
-import {yupResolver} from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import React, { useState } from 'react'
+import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { useNavigate } from "react-router-dom"
+import { yupResolver } from '@hookform/resolvers/yup'
+// recursos locales
+import { routeHome } from "@/routes"
+import { useAppContext } from '@/hooks'
+import { userLogin } from "@/api"
 // componentes
 import {
-  Typography,
   Input,
   InputLabel,
   FormHelperText,
   FormControl,
   InputAdornment,
   IconButton,
-  Divider,
-  Paper
 } from '@mui/material'
 import {
   LoadingButton
@@ -22,12 +22,8 @@ import {
   Visibility,
   VisibilityOff
 } from '@mui/icons-material'
-import {AuthBackground} from '@/components'
-// recursos locales
-import { useAppContext } from '@/hooks'
-import {userLogin, checkIsLogged} from "@/api"
 // logica del componente
-import {IFormInput, validationSchema} from "./LoginForm.Validations"
+import { IFormInput, validationSchema } from "./LoginForm.Validations"
 
 export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -48,7 +44,7 @@ export const LoginForm = () => {
     const loggedUser = await userLogin(data.email, data.password)
     if (loggedUser) {
       setUser(loggedUser)
-      navigate("/")
+      navigate(routeHome)
     }
     setLoading(false)
   }

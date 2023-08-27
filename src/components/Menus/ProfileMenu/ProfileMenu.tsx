@@ -1,29 +1,24 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 // recursos locales
-import {useAppContext} from '@/hooks'
-import {userLogout} from '@/api'
+import { routeHome } from "@/routes"
+import { useAppContext } from '@/hooks'
+import { userLogout } from '@/api'
 // componentes
 import {
   Menu,
   MenuItem,
   MenuProps
 } from '@mui/material'
-import {
 
-} from "@mui/icons-material"
-
-export type ProfileMenuProps = MenuProps & {
-}
-
-export const ProfileMenu = ({ anchorEl, id, transformOrigin, open, onClose, onClick }: ProfileMenuProps) => {
+export const ProfileMenu = ({ anchorEl, id, transformOrigin, open, onClose, onClick }: MenuProps) => {
   const {setUser} = useAppContext()
   const navigate = useNavigate()
 
   const handleLoggout = () => {
     userLogout()
     setUser(null)
-    navigate("/")
+    navigate(routeHome)
   }
 
   return (

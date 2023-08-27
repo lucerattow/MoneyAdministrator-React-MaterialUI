@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 // recursos locales
+import { routeCreditCardDetails } from "@/routes"
 import { CreditCardBrand, CreditCardDto } from '@/interfaces'
 // componentes
 import {
@@ -33,12 +34,12 @@ export const CreditCard = () => {
     // }
   }
 
-  const handleCreditCardClick = (id: string) => {
-    navigate(`/credit-card-details/${id}`)
+  const handleCreditCardClick = () => {
+    navigate(routeCreditCardDetails(creditCardId))
   }
 
   return (
-    <Button className={styles.CreditCard} fullWidth onClick={() => onClick(creditCardId)}>
+    <Button className={styles.CreditCard} fullWidth onClick={handleCreditCardClick}>
       <Grid container direction="row" wrap='nowrap'>
         <Grid container mr={2} width={64} justifyContent="center" alignItems="center">
           <img className={styles.Logo} src={brandLogo()} alt="logo" />

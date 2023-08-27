@@ -1,8 +1,8 @@
-import {ReactNode} from 'react'
-import {useAppContext} from '@/hooks';
+import { ReactNode } from 'react'
+import { useAppContext } from '@/hooks';
 // componentes
-import {Header} from "@/Layout"
-import {NotificationPanel} from "@/Layout"
+import { Header } from "@/Layout"
+import { NotificationPanel } from "@/Layout"
 // estilos
 import styles from "./LoggedOutLayout.module.scss"
 
