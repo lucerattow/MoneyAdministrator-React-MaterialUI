@@ -10,8 +10,10 @@ export type PageContainerProps = {
 
 export const PageContainer = ({ children }: PageContainerProps) => {
   return (
-    <div className={styles.PageContainer}>
-      {children}
+    <div className={styles.Page}>
+      <div className={styles.Container}>
+        {children}
+      </div>
     </div>
   )
 }

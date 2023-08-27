@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 // recursos locales
 import { CreditCardBrand, CreditCardDto } from '@/interfaces'
 // componentes
@@ -6,7 +7,8 @@ import {
   Grid,
   Typography,
   Paper,
-  Button
+  Button,
+  ButtonGroup
 } from '@mui/material'
 // assets
 import mastercardLogo from "@/assets/svg/mastercard.svg"
@@ -15,35 +17,40 @@ import visaLogo from "@/assets/svg/visa.svg"
 import styles from "./CreditCard.module.scss"
 
 export type CreditCardProps = {
-  creditCard: CreditCardDto
 }
 
-export const CreditCard = ({ creditCard: { brand, lastNumbers } }: CreditCardProps) => {
-  console.log(styles)
+export const CreditCard = () => {
+  const navigate = useNavigate()
+  const creditCardId = "1"
+
   const brandLogo = () => {
-    switch (brand) {
-      case CreditCardBrand.Mastercard:
-        return mastercardLogo
-      case CreditCardBrand.Visa:
-        return visaLogo
-    }
+    return mastercardLogo
+    // switch (brand) {
+    //   case CreditCardBrand.Mastercard:
+    //     return mastercardLogo
+    //   case CreditCardBrand.Visa:
+    //     return visaLogo
+    // }
+  }
+
+  const handleCreditCardClick = (id: string) => {
+    navigate(`/credit-card-details/${id}`)
   }
 
   return (
-    <Button className={styles.CreditCard} fullWidth>
+    <Button className={styles.CreditCard} fullWidth onClick={() => onClick(creditCardId)}>
       <Grid container direction="row" wrap='nowrap'>
-        <Grid item mr={2}>
+        <Grid container mr={2} width={64} justifyContent="center" alignItems="center">
           <img className={styles.Logo} src={brandLogo()} alt="logo" />
         </Grid>
         <Grid container direction="column" justifyContent="center" alignItems="start">
           <Typography className={styles.Number}>
-            **** **** **** {lastNumbers}
+            **** **** **** 1234
           </Typography>
           <Typography className={styles.Name}>
             Lucas Ceratto
           </Typography>
         </Grid>
-        <Button>D</Button>
       </Grid>
     </Button>
   )

@@ -11,9 +11,9 @@ import {
   List,
   ListItem,
 } from '@mui/material'
-import { PageContainer, CreditCardQuickInfoCard } from "@/components"
+import { PageContainer, CreditCardRow } from "@/components"
 // estilos
-import "./CreditCards.scss"
+import styles from "./CreditCards.module.scss"
 
 export type CreditCardsProps = {}
 
@@ -40,7 +40,7 @@ export const CreditCards = ({  }: CreditCardsProps) => {
           </ListItem>
           {mockCreditCards.map((creditCard) => (
             <ListItem>
-              <CreditCardQuickInfoCard creditCard={creditCard} />
+              <CreditCardRow creditCard={creditCard} />
             </ListItem>
           ))}
         </List>

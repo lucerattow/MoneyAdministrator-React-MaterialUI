@@ -37,3 +37,8 @@ input:-moz-autofill:focus {
     color: inherit;
     background: inherit;
 }
+
+//Elimino el ojo para mostrar contraseña en algunos navegadores modernos
+input[type="password"]::-ms-reveal {
+    display: none;
+}
