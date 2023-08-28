@@ -1,4 +1,7 @@
 export * from "./CreditCardDetails/CreditCardDetails"
 export * from "./CreditCards/CreditCards"
+export * from "./Dashboard/Dashboard"
 export * from "./LogIn/LogIn"
+export * from "./PageNotFound/PageNotFound"
 export * from "./Register/Register"
+export * from "./Transactions/Transactions"

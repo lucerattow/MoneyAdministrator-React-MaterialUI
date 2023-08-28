@@ -12,8 +12,11 @@ import {
 import {
   CreditCardDetails,
   CreditCards,
+  Dashboard,
+  PageNotFound,
   LogIn,
-  Register
+  Register,
+  Transactions
 } from '@/pages'
 import { LoggedOutLayout, LoggedInLayout } from '@/Layout'
 
@@ -29,18 +32,18 @@ export const AppRoutes = () => {
               <Route path={routeHome} element={<LogIn />} />
               <Route path={routeRegister} element={<Register />} />
 
-              <Route path="*" element={<h1>404 Error, pagina no encontrada</h1>} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </LoggedOutLayout>
         ) : (
           <LoggedInLayout>
             <Routes>
-              <Route path={routeHome} element={<h1>Dashboard</h1>} />
+              <Route path={routeHome} element={<Dashboard />} />
               <Route path={routeCreditCards} element={<CreditCards />} />
-              <Route path={routeTransactions} element={<h1>Transacciones</h1>} />
+              <Route path={routeTransactions} element={<Transactions />} />
               <Route path={routeCreditCardDetails(":id")} element={<CreditCardDetails />} />
 
-              <Route path="*" element={<h1>404 Error, pagina no encontrada</h1>} />
+              <Route path="*" element={<PageNotFound />} />
             </Routes>
           </LoggedInLayout>
         )
