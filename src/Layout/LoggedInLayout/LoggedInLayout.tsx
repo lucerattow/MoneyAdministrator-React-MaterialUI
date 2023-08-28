@@ -4,6 +4,7 @@ import { useAppContext } from '@/hooks';
 // componentes
 import { Header } from "@/Layout"
 import { NotificationPanel, LeftPanel } from "@/Layout"
+import { Breadcrumbs, PageContainer } from "@/components"
 // estilos
 import styles from "./LoggedInLayout.module.scss"
 
@@ -19,7 +20,10 @@ export const LoggedInLayout = ({ children }: LoggedInLayoutProps) => {
       <Header />
       <div className={styles.Container}>
         <LeftPanel />
-        {children}
+        <PageContainer>
+          <Breadcrumbs />
+          {children}
+        </PageContainer>
       </div>
       <NotificationPanel show={notificationPanelShow} />
     </div>

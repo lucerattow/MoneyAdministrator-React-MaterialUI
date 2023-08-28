@@ -1,4 +1,4 @@
-export const routeHome = "/home"
+export const routeHome = "/"
 export const routeRegister = "/register"
 export const routeTransactions = "/transactions"
 export const routeCreditCards = "/credit-cards"

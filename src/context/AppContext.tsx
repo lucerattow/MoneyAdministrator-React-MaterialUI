@@ -1,14 +1,18 @@
-import React, {useState, useEffect, createContext, ReactNode} from 'react'
+import React, { useState, useEffect, createContext, ReactNode } from 'react'
 // recursos locales
-import {checkIsLogged} from '@/api'
-import {userDto} from "@/interfaces"
+import { checkIsLogged } from '@/api'
+import { userDto} from "@/interfaces"
 
 //Defino el contexto
 interface AppContextType {
+  //states
   user: userDto | null
-  setUser: React.Dispatch<React.SetStateAction<userDto | null>>
   notificationPanelShow: boolean
+  breadcrumbItems: string[]
+  //setters
+  setUser: React.Dispatch<React.SetStateAction<userDto | null>>
   setNotificationPanelShow: React.Dispatch<React.SetStateAction<boolean>>
+  setBreadcrumbItems: React.Dispatch<React.SetStateAction<string[]>>
 }
 
 export const AppContext = createContext<AppContextType | null>(null)
@@ -21,6 +25,7 @@ interface AppContextProviderProps {
 export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children }) => {
   const [user, setUser] = useState<userDto | null>(null)
   const [notificationPanelShow, setNotificationPanelShow] = useState<boolean>(false)
+  const [breadcrumbItems, setBreadcrumbItems] = useState<string[]>([])
 
   // ejecucion inicial de la app
   useEffect(() => {
@@ -34,9 +39,11 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
     //states
     user,
     notificationPanelShow,
+    breadcrumbItems,
     //setters
     setUser,
     setNotificationPanelShow,
+    setBreadcrumbItems,
     //functions
   };
 

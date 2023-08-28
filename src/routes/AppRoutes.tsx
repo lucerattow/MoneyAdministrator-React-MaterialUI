@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+// recursos locales
 import { useAppContext } from '@/hooks'
 import {
   routeHome,
@@ -7,13 +8,14 @@ import {
   routeCreditCards,
   routeCreditCardDetails,
 } from "@/routes"
-import { LoggedOutLayout, LoggedInLayout } from '@/Layout'
+// componentes
 import {
   CreditCardDetails,
   CreditCards,
   LogIn,
   Register
 } from '@/pages'
+import { LoggedOutLayout, LoggedInLayout } from '@/Layout'
 
 export const AppRoutes = () => {
   const { user } = useAppContext()
