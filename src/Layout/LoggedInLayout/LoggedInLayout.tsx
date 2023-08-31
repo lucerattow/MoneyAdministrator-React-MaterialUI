@@ -8,22 +8,24 @@ import { Breadcrumbs, PageContainer } from "@/components"
 // estilos
 import styles from "./LoggedInLayout.module.scss"
 
-interface LoggedInLayoutProps {
+export type LoggedInLayoutProps = React.HTMLProps<HTMLDivElement> & {
   children: ReactNode;
 }
 
-export const LoggedInLayout = ({ children }: LoggedInLayoutProps) => {
+export const LoggedInLayout = ({ children, ...divProps }: LoggedInLayoutProps) => {
   const {notificationPanelShow} = useAppContext();
 
   return (
-    <div className={styles.Layout}>
+    <div {...divProps} className={styles.layout}>
       <Header />
-      <div className={styles.Container}>
-        <LeftPanel />
-        <PageContainer>
-          <Breadcrumbs />
-          {children}
-        </PageContainer>
+      <div className={styles.layout_container}>
+        <LeftPanel className={styles.layout_leftpanel} />
+        <div className={styles.layout_scroll}>
+          <PageContainer className={styles.layout_page}>
+            <Breadcrumbs />
+            {children}
+          </PageContainer>
+        </div>
       </div>
       <NotificationPanel show={notificationPanelShow} />
     </div>

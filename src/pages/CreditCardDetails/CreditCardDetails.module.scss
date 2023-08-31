@@ -1,0 +1,16 @@
+@import "@/styles/index.scss";
+
+.summary {
+  &_buttons {
+    margin-top: 16px;
+  }
+
+  &_list {
+    margin-top: 4px;
+    flex: 1;
+  }
+
+  &_tables {
+    margin-top: 16px;
+  }
+}

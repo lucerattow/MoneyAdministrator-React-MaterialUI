@@ -8,24 +8,21 @@ import {
   Paper,
   Button,
 } from '@mui/material'
-import { CreditCard, CreditCardDetails } from "@/components"
+import { CreditCardSmall, CreditCardDetails } from "@/components"
 import { CreditCardDto } from '@/interfaces'
 // estilos
+import styles from "./SummaryList.module.scss"
 
-export type CreditCardRowProps = {
-  creditCard: CreditCardDto
-}
-
-export const CreditCardRow = ({ creditCard }: CreditCardRowProps) => {
+export const CreditCardRow = () => {
   return (
-    <>
-      <Grid item width={350}>
-        <CreditCard />
+    <Grid container direction="row" wrap="nowrap">
+      <Grid item width={280}>
+        <CreditCardSmall />
       </Grid>
-      <Grid item flex={1}>
+      <Grid item flex={1} ml={2}>
         <CreditCardDetails />
       </Grid>
-    </>
+    </Grid>
   )
 }
 

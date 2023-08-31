@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 // recursos locales
-import { mockCreditCards } from "@/interfaces"
 import { useAppContext } from "@/hooks"
 // componentes
 import {
@@ -12,30 +11,27 @@ import {
   List,
   ListItem,
 } from '@mui/material'
-import { PageContainer, CreditCardRow } from "@/components"
+import { CreditCardRow, PageHeader } from "@/components"
 // estilos
 import styles from "./CreditCards.module.scss"
-import { FirstPage } from '@mui/icons-material'
 
 export type CreditCardsProps = {}
 
 export const CreditCards = ({  }: CreditCardsProps) => {
   const { setBreadcrumbItems } = useAppContext()
 
-  useEffect(() => {
+  React.useEffect(() => {
     setBreadcrumbItems(["Tarjetas de credito"])
   }, [])
 
   return (
     <Paper>
-      <Grid container padding={2}>
-        <Typography variant="h5">Tarjetas de Credito</Typography>
-      </Grid>
+      <PageHeader title='Tarjetas de Credito' />
       <Divider />
       <List>
         {/* boton: añadir tarjeta */}
         <ListItem>
-          <Grid item width={350}>
+          <Grid item width={280}>
             <Button
               variant="contained"
               fullWidth
@@ -44,11 +40,15 @@ export const CreditCards = ({  }: CreditCardsProps) => {
             </Button>
           </Grid>
         </ListItem>
-        {mockCreditCards.map((creditCard) => (
-          <ListItem>
-            <CreditCardRow creditCard={creditCard} />
-          </ListItem>
-        ))}
+        <ListItem>
+          <CreditCardRow />
+        </ListItem>
+        <ListItem>
+          <CreditCardRow />
+        </ListItem>
+        <ListItem>
+          <CreditCardRow />
+        </ListItem>
       </List>
     </Paper>
   )

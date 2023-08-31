@@ -1,16 +1,47 @@
 @import "@/styles/index.scss";
 
-.Layout {
+.layout {
   display: flex;
   flex-direction: column;
 
   height: 100vh;
   width: 100vw;
-}
 
-.Container {
-  display: flex;
+  &_container {
+    display: flex;
 
-  height: calc(100vh - $header-height);
-  width: 100vw;
+    height: calc(100vh - $header-height);
+    width: 100vw;
+  }
+
+  &_leftpanel {
+    width: $left-panel-width;
+  }
+
+  &_scroll {
+    width: calc(100vw - $left-panel-width);
+    height: calc(100vh - $header-height);
+    overflow-y: auto;
+
+    //Firefox Scrollbar
+    scrollbar-width: thin; /* thin o auto */
+    scrollbar-color: $background-cards $background;
+    //IE Scrollbar
+    scrollbar-face-color: $background-cards;
+    scrollbar-track-color: $background;
+
+    &::-webkit-scrollbar {
+      width: $scroll-bar-width; /* Ancho de la barra de desplazamiento */
+      background-color: $background; /* Color de fondo de la pista */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $background-cards; /* Color de la barra de desplazamiento */
+      border-radius: 5px; /* Borde redondeado */
+    }
+  }
+
+  &_page {
+    width: calc(100vw - $left-panel-width - $scroll-bar-width);
+  }
 }

@@ -8,10 +8,15 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { LeftPanelButton } from '@/components';
 // estilos
 import styles from "./LeftPanel.module.scss"
+import classNames from 'classnames';
 
-export const LeftPanel = () => {
+type LeftPanelProps = {
+  className?: string
+}
+
+export const LeftPanel: React.FC<LeftPanelProps> = ({ className }) => {
   return (
-    <Paper className={styles.Container} >
+    <Paper className={classNames(className, styles.Container)} >
       <List>
         <LeftPanelButton
           text="Dashboard"

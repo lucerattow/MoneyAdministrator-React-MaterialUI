@@ -1,4 +1,4 @@
-import React from 'react'
+// estilos
 import styles from "./AuthBackground.module.scss"
 
 export const AuthBackground = () => {

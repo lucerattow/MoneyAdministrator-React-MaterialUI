@@ -1,0 +1,28 @@
+@import "@/styles/index.scss";
+
+.list_item {
+  padding-left: 40px !important;
+  background-color: inherit;
+
+  &:hover {
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.08);
+
+    + .action_icons {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.action_icons {
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+
+  &:hover {
+    visibility: visible;
+    opacity: 1;
+  }
+}

@@ -12,15 +12,12 @@ import {
   ButtonGroup
 } from '@mui/material'
 // assets
-import mastercardLogo from "@/assets/svg/mastercard.svg"
-import visaLogo from "@/assets/svg/visa.svg"
+import mastercardLogo from "@/assets/logos/mastercard.svg"
+import visaLogo from "@/assets/logos/visa.svg"
 // estilos
-import styles from "./CreditCard.module.scss"
+import styles from "./CreditCardSmall.module.scss"
 
-export type CreditCardProps = {
-}
-
-export const CreditCard = () => {
+export const CreditCardSmall = () => {
   const navigate = useNavigate()
   const creditCardId = "1"
 
@@ -39,17 +36,17 @@ export const CreditCard = () => {
   }
 
   return (
-    <Button className={styles.CreditCard} fullWidth onClick={handleCreditCardClick}>
-      <Grid container direction="row" wrap='nowrap'>
+    <Button className={styles.CreditCard} fullWidth onClick={handleCreditCardClick} sx={{ padding: "20px" }}>
+      <Grid container direction="row" wrap='nowrap' >
         <Grid container mr={2} width={64} justifyContent="center" alignItems="center">
           <img className={styles.Logo} src={brandLogo()} alt="logo" />
         </Grid>
-        <Grid container direction="column" justifyContent="center" alignItems="start">
+        <Grid container direction="column" justifyContent="center" alignItems="end">
+          <Typography className={styles.Name}>
+            HSBC
+          </Typography>
           <Typography className={styles.Number}>
             **** **** **** 1234
-          </Typography>
-          <Typography className={styles.Name}>
-            Lucas Ceratto
           </Typography>
         </Grid>
       </Grid>
@@ -57,4 +54,4 @@ export const CreditCard = () => {
   )
 }
 
-export default CreditCard
+export default CreditCardSmall

@@ -11,15 +11,13 @@ import {
 // estilos
 import styles from "./CreditCardDetails.module.scss"
 
-export type CreditCardDetailsProps = {}
-
-export const CreditCardDetails = ({  }: CreditCardDetailsProps) => {
+export const CreditCardDetails = () => {
   return (
-    <Grid container direction="row" wrap="nowrap" justifyContent="space-between" alignItems="space-between">
+    <Grid container direction="row" wrap="nowrap" justifyContent="space-between" alignItems="space-between" height={85}>
       {/* Fechas */}
       <Grid container direction="row" wrap="nowrap" md={6}>
         {/* Fecha cierre, Vencimiento */}
-        <Grid container direction="column" justifyContent="space-between" ml={2} md={3}>
+        <Grid container direction="column" justifyContent="space-between" md={3} mr={2}>
           <Grid container direction="column" wrap="nowrap">
             <Typography className={ styles.PropTitle }>Fecha de cierre</Typography>
             <Typography>--/--/----</Typography>
@@ -30,7 +28,7 @@ export const CreditCardDetails = ({  }: CreditCardDetailsProps) => {
           </Grid>
         </Grid>
         {/* Prox Cierre, Prox Vto */}
-        <Grid container direction="column" justifyContent="space-between" ml={2} md={3}>
+        <Grid container direction="column" justifyContent="space-between" mr={2} md={3}>
           <Grid container direction="column" wrap="nowrap">
             <Typography className={ styles.PropTitle }>Proximo cierre</Typography>
             <Typography>--/--/----</Typography>

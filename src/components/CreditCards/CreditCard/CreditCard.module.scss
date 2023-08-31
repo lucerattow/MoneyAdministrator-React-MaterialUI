@@ -1,0 +1,36 @@
+@import "@/styles/index.scss";
+
+.CreditCard {
+  border-radius: 15px !important;
+  padding: auto !important;
+
+  transition: box-shadow 0.3s ease; /* Transición suave de la sombra */
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+  background-color: #171717 !important;
+  color: white !important;
+}
+
+.BankLogo {
+  height: 30px;
+}
+
+.Chip {
+  height: 50px;
+}
+
+.Logo {
+  width: 64px;
+  height: 64px;
+}
+
+.Number {
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.Name {
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
