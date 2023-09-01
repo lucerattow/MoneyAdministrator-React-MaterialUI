@@ -8,36 +8,22 @@ import { useAppContext } from '@/hooks'
 import { userLogin } from "@/api"
 // componentes
 import {
-  Input,
-  InputLabel,
-  FormHelperText,
-  FormControl,
-  InputAdornment,
-  IconButton,
-} from '@mui/material'
-import {
   LoadingButton
 } from "@mui/lab"
 import {
-  Visibility,
-  VisibilityOff
-} from '@mui/icons-material'
+  InputText,
+  InputPassword
+} from "@/components"
 // logica del componente
 import { IFormInput, validationSchema } from "./LoginForm.Validations"
 
 export const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false)
   const [loading, setLoading] = useState<boolean>(false)
   const navigate = useNavigate()
   const { setUser } = useAppContext()
   const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>({
     resolver: yupResolver(validationSchema),
   })
-
-  const onClickShowPassword = () => setShowPassword(!showPassword)
-  const onMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-  }
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setLoading(true)
@@ -51,67 +37,20 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
+      <InputText
         name="email"
+        label="Correo Electrónico"
         control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <FormControl
-            margin="dense"
-            error={!!errors.email}
-            variant="standard"
-            fullWidth
-          >
-            <InputLabel htmlFor="email">Correo Electrónico</InputLabel>
-            <Input
-              {...field}
-              id="email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              error={!!errors.email}
-              aria-describedby="email-error"
-            />
-            {!!errors.email && <FormHelperText id="email-error">{errors.email?.message}</FormHelperText>}
-          </FormControl>
-        )}
+        errors={errors}
+        autoComplete="email"
+        autoFocus
       />
-      <Controller
+      <InputPassword
         name="password"
+        label="Contraseña"
         control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <FormControl
-            margin="dense"
-            variant="standard"
-            fullWidth
-            error={!!errors.password}
-          >
-            <InputLabel htmlFor="password">Contraseña</InputLabel>
-            <Input
-              {...field}
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              name="password"
-              autoComplete="current-password"
-              aria-describedby="password-error"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={onClickShowPassword}
-                    onMouseDown={onMouseDownPassword}
-                    edge="end"
-                    tabIndex={-1}
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-            {!!errors.password && <FormHelperText id="password-error">{errors.password?.message}</FormHelperText>}
-          </FormControl>
-        )}
+        errors={errors}
+        autoComplete="current-password"
       />
       <LoadingButton
         type="submit"

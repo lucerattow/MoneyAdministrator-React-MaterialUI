@@ -22,6 +22,10 @@ import {
   Visibility,
   VisibilityOff
 } from '@mui/icons-material';
+import {
+  InputText,
+  InputPassword
+} from "@/components"
 // logica del componente
 import { IFormInput, validationSchema } from "./RegisterForm.Validations"
 
@@ -54,129 +58,34 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Controller
+      <InputText
         name="displayName"
+        label="Nombre de usuario"
         control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <FormControl
-            margin="dense"
-            error={!!errors.displayName}
-            variant="standard"
-            fullWidth
-          >
-            <InputLabel htmlFor="displayName">Nombre de usuario</InputLabel>
-            <Input
-              {...field}
-              id="displayName"
-              name="displayName"
-              autoComplete="displayName"
-              autoFocus
-              error={!!errors.displayName}
-              aria-describedby="displayName-error"
-            />
-            {!!errors.displayName && <FormHelperText id="displayName-error">{errors.displayName?.message}</FormHelperText>}
-          </FormControl>
-        )}
+        errors={errors}
+        autoComplete="email"
+        autoFocus
       />
-      <Controller
+      <InputText
         name="email"
+        label="Correo Electrónico"
         control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <FormControl
-            margin="dense"
-            error={!!errors.email}
-            variant="standard"
-            fullWidth
-          >
-            <InputLabel htmlFor="email">Correo Electrónico</InputLabel>
-            <Input
-              {...field}
-              id="email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              error={!!errors.email}
-              aria-describedby="email-error"
-            />
-            {!!errors.email && <FormHelperText id="email-error">{errors.email?.message}</FormHelperText>}
-          </FormControl>
-        )}
+        errors={errors}
+        autoComplete="email"
       />
-      <Controller
+      <InputPassword
         name="password"
+        label="Contraseña"
         control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <FormControl
-            margin="dense"
-            variant="standard"
-            fullWidth
-            error={!!errors.password}
-          >
-            <InputLabel htmlFor="password">Contraseña</InputLabel>
-            <Input
-              {...field}
-              type={showPassword ? 'text' : 'password'}
-              id="password"
-              name="password"
-              autoComplete="current-password"
-              aria-describedby="password-error"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    tabIndex={-1}
-                    aria-label="toggle password visibility"
-                    onClick={onClickShowPassword}
-                    onMouseDown={onMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-            {!!errors.password && <FormHelperText id="password-error">{errors.password?.message}</FormHelperText>}
-          </FormControl>
-        )}
+        errors={errors}
+        autoComplete="current-password"
       />
-      <Controller
+      <InputPassword
         name="confirmPassword"
+        label="Confirmar Contraseña"
         control={control}
-        defaultValue=""
-        render={({ field }) => (
-          <FormControl
-            margin="dense"
-            variant="standard"
-            fullWidth
-            error={!!errors.confirmPassword}
-          >
-            <InputLabel htmlFor="confirmPassword">Confirmar Contraseña</InputLabel>
-            <Input
-              {...field}
-              type={showConfirmPassword ? 'text' : 'password'}
-              id="confirmPassword"
-              name="confirmPassword"
-              autoComplete="current-password"
-              aria-describedby="confirm-password-error"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    tabIndex={-1}
-                    aria-label="toggle password visibility"
-                    onClick={onClickShowConfirmPassword}
-                    onMouseDown={onMouseDownPassword}
-                    edge="end"
-                  >
-                    {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-            {!!errors.confirmPassword && <FormHelperText id="confirm-password-error">{errors.confirmPassword?.message}</FormHelperText>}
-          </FormControl>
-        )}
+        errors={errors}
+        autoComplete="confirm-password-error"
       />
       <LoadingButton
         type="submit"
