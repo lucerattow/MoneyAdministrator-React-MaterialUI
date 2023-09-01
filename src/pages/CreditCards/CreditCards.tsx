@@ -5,24 +5,34 @@ import { useAppContext } from "@/hooks"
 import {
   Grid,
   Divider,
-  Typography,
   Paper,
   Button,
   List,
   ListItem,
 } from '@mui/material'
-import { CreditCardRow, PageHeader } from "@/components"
+import { CreditCardRow, PageHeader, Modal, FormCreditCardAdd } from "@/components"
 // estilos
 import styles from "./CreditCards.module.scss"
 
 export type CreditCardsProps = {}
 
-export const CreditCards = ({  }: CreditCardsProps) => {
+export const CreditCards = ({ }: CreditCardsProps) => {
+  const [modalShow, setModalShow] = React.useState<boolean>(false)
+  const [modalTitle, setModalTitle] = React.useState<string>("")
+  const [modalContent, setModalContent] = React.useState<React.ReactNode>(undefined)
   const { setBreadcrumbItems } = useAppContext()
 
   React.useEffect(() => {
     setBreadcrumbItems(["Tarjetas de credito"])
   }, [])
+
+  const handleAddCreditCardClick = () => {
+    setModalTitle("Nueva tarjeta de credito")
+    setModalContent(<FormCreditCardAdd />)
+    setModalShow(true)
+  }
+
+  const handleCloseModalClick = () => setModalShow(false)
 
   return (
     <Paper>
@@ -35,6 +45,7 @@ export const CreditCards = ({  }: CreditCardsProps) => {
             <Button
               variant="contained"
               fullWidth
+              onClick={handleAddCreditCardClick}
             >
               Añadir tarjeta
             </Button>
@@ -50,6 +61,13 @@ export const CreditCards = ({  }: CreditCardsProps) => {
           <CreditCardRow />
         </ListItem>
       </List>
+      <Modal
+        show={modalShow}
+        onClose={handleCloseModalClick}
+        title={modalTitle}
+      >
+        {modalContent}
+      </Modal>
     </Paper>
   )
 }

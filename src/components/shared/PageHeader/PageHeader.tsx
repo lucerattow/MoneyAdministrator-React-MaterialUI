@@ -1,12 +1,11 @@
 import React from 'react'
-// recursos locales
+import classNames from 'classnames'
 // componentes
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 import { ButtonBack } from "@/components"
 // estilos
 import styles from "./PageHeader.module.scss"
-import classNames from 'classnames'
-import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
 
 export type PageHeaderProps = {
   className?: string

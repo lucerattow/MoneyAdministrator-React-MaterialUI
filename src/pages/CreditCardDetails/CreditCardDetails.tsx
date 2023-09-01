@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 // recursos locales
 import { useAppContext } from "@/hooks"
 // componentes
@@ -9,8 +9,6 @@ import {
   Paper,
   Button,
   ButtonGroup,
-  List,
-  ListItem,
 } from '@mui/material'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
@@ -22,23 +20,13 @@ import {
   TableCreditCardSummaryDetails,
   PageHeader
 } from '@/components'
-import { ButtonBack } from "@/components"
 // estilos
 import styles from "./CreditCardDetails.module.scss"
-
-interface Folder {
-  year: number
-  items: Items[]
-}
-
-interface Items {
-  name: string
-}
 
 export const CreditCardDetails = () => {
   const { setBreadcrumbItems } = useAppContext()
 
-  useEffect(() => {
+  React.useEffect(() => {
     setBreadcrumbItems(["Tarjetas de credito", "Información de la tarjeta"])
   }, [])
 

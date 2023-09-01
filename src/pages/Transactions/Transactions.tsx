@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 // recursos locales
 import { useAppContext } from "@/hooks"
 // componentes
@@ -7,7 +7,7 @@ import { useAppContext } from "@/hooks"
 export const Transactions = () => {
   const { setBreadcrumbItems } = useAppContext()
 
-  useEffect(() => {
+  React.useEffect(() => {
     setBreadcrumbItems(["Transacciones"])
   }, [])
 
