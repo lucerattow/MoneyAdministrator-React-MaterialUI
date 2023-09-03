@@ -4,10 +4,17 @@ import React from 'react'
 import {
   Grid,
   Typography,
-  Paper,
   Button,
-  ButtonGroup
+  Dialog,
+  IconButton
 } from '@mui/material'
+import {
+  ModalCreditCard,
+  Modal,
+  DialogCreditCardDelete
+} from '@/components'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 // assets
 import mastercardLogo from "@/assets/logos/mastercard.svg"
 import visaLogo from "@/assets/logos/visa.svg"
@@ -18,6 +25,9 @@ import contactlessImg from "@/assets/creditCard/contactless.svg"
 import styles from "./CreditCard.module.scss"
 
 export const CreditCard = () => {
+  const [dialogCreditCardDeleteShow, setDialogCreditCardDeleteShow] = React.useState<boolean>(false)
+  const [modalShow, setModalShow] = React.useState<boolean>(false)
+
   const brandLogo = () => {
     return mastercardLogo
     // switch (brand) {
@@ -28,12 +38,30 @@ export const CreditCard = () => {
     // }
   }
 
+  const handleDialogCreditCardOpen = () => setDialogCreditCardDeleteShow(true)
+
+  const handleDialogCreditCardClose = () => setDialogCreditCardDeleteShow(false)
+
+  const handleAddCreditCardClick = () => {
+    setModalShow(true)
+  }
+
+  const handleCloseModalClick = () => setModalShow(false)
+
   return (
     <Grid className={styles.CreditCard} sx={{ padding: "20px" }} container direction="column" height={200}>
-      <Grid container direction="row" justifyContent="end">
+      <Grid container direction="row" justifyContent="space-between" alignItems="center" wrap="nowrap">
+        <Grid className={styles.action_buttons} item>
+          <IconButton size="small" onClick={handleAddCreditCardClick}>
+            <EditOutlinedIcon />
+          </IconButton>
+          <IconButton size="small" color="error" onClick={handleDialogCreditCardOpen}>
+            <DeleteOutlineOutlinedIcon />
+          </IconButton>
+        </Grid>
         <img className={styles.BankLogo} src={hsbcLogo} alt="logo" />
       </Grid>
-      <Grid container direction="row" justifyContent="space-between" alignItems="center" mt={2}>
+      <Grid container direction="row" justifyContent="space-between" alignItems="center" mt={1}>
         <img className={styles.Chip} src={chipImg} alt="logo" />
         <img className={styles.BankLogo} src={contactlessImg} alt="logo" />
       </Grid>
@@ -50,6 +78,15 @@ export const CreditCard = () => {
           <img className={styles.Logo} src={brandLogo()} alt="logo" />
         </Grid>
       </Grid>
+      <DialogCreditCardDelete
+        open={dialogCreditCardDeleteShow}
+        handleClose={handleDialogCreditCardClose}
+      />
+      <ModalCreditCard
+        show={modalShow}
+        onClose={handleCloseModalClick}
+        mode="update"
+      />
     </Grid>
   )
 }

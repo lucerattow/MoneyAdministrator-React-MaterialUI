@@ -26,34 +26,18 @@ export const TableCreditCardPayments: React.FC<TableCreditCardPaymentsProps> = (
             <TableCell>Fecha</TableCell>
             <TableCell>Entidad</TableCell>
             <TableCell>Descripcion</TableCell>
-            <TableCell>Monto</TableCell>
+            <TableCell align='right'>Monto</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow className={styles.table_row} >
-            <TableCell>----/--/--</TableCell>
-            <TableCell>BANCO</TableCell>
-            <TableCell>Descripcion del gasto loco</TableCell>
-            <TableCell align='right'>99.999,00 $</TableCell>
-          </TableRow>
-          <TableRow className={styles.table_row} >
-            <TableCell>----/--/--</TableCell>
-            <TableCell>BANCO</TableCell>
-            <TableCell>Descripcion del gasto loco</TableCell>
-            <TableCell align='right'>99.999,00 $</TableCell>
-          </TableRow>
-          <TableRow className={styles.table_row} >
-            <TableCell>----/--/--</TableCell>
-            <TableCell>BANCO</TableCell>
-            <TableCell>Descripcion del gasto loco</TableCell>
-            <TableCell align='right'>99.999,00 $</TableCell>
-          </TableRow>
-          <TableRow className={styles.table_row} >
-            <TableCell>----/--/--</TableCell>
-            <TableCell>BANCO</TableCell>
-            <TableCell>Descripcion del gasto loco</TableCell>
-            <TableCell align='right'>99.999,00 $</TableCell>
-          </TableRow>
+          {[1, 2, 3, 4].map(() => (
+            <TableRow className={styles.table_row} >
+              <TableCell>2023/03/23</TableCell>
+              <TableCell>BANCO</TableCell>
+              <TableCell>Descripcion del gasto loco</TableCell>
+              <TableCell align='right'>99.999,00 $</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

@@ -18,7 +18,7 @@ import {
   SummaryList,
   TableCreditCardPayments,
   TableCreditCardSummaryDetails,
-  PageHeader
+  PageHeader,
 } from '@/components'
 // estilos
 import styles from "./CreditCardDetails.module.scss"
@@ -32,7 +32,7 @@ export const CreditCardDetails = () => {
 
   return (
     <Paper>
-      <PageHeader title='Información de la tarjeta' buttonBack />
+      <PageHeader title='Información de la tarjeta' subtitle="Resumen 04/2023" buttonBack />
       <Divider />
       <Grid container direction="row" wrap="nowrap" pt={1} pb={1} pl={2} pr={2}>
         {/* Columna Izquierda */}

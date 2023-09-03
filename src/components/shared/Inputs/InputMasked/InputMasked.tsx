@@ -1,5 +1,6 @@
 import React from 'react'
 import { Controller, Control, FieldValues, FieldErrors } from 'react-hook-form';
+import MaskedInput from 'react-text-mask';
 // componentes
 import {
   Input,
@@ -9,7 +10,7 @@ import {
   InputAdornment,
 } from '@mui/material'
 
-type InputTextProps<T extends FieldValues> = {
+type InputMaskedProps<T extends FieldValues> = {
   className?: string
   name: keyof T
   label: string
@@ -19,9 +20,10 @@ type InputTextProps<T extends FieldValues> = {
   autoFocus?: boolean
   autoComplete?: string
   icon?: React.ReactNode
+  mask: (string | RegExp)[];
 };
 
-export const InputText: React.FC<InputTextProps<any>> = ({ className, name, label, control, errors, defaultValue = "", autoFocus = false, autoComplete = "", icon }) => {
+export const InputMasked: React.FC<InputMaskedProps<any>> = ({ className, name, label, control, errors, icon, mask, defaultValue = "", autoFocus = false, autoComplete = "" }) => {
   const errorMessage = errors[name as string]?.message as string
   const _name = name as string
 
@@ -39,18 +41,27 @@ export const InputText: React.FC<InputTextProps<any>> = ({ className, name, labe
           fullWidth
         >
           <InputLabel htmlFor={_name}>{label}</InputLabel>
-          <Input
+          <MaskedInput
             {...field}
+            mask={mask}
+            guide={true}
+            showMask={true}
+            placeholderChar="_"
             id={_name}
             name={_name}
             autoComplete={autoComplete}
             autoFocus={autoFocus}
-            error={!!errors[_name]}
             aria-describedby={`${_name}-error`}
-            endAdornment={icon && (
-              <InputAdornment position="end">
-                {icon}
-              </InputAdornment>
+            render={(ref, props) => (
+              <Input
+                {...props}
+                inputRef={ref}
+                endAdornment={icon && (
+                  <InputAdornment position="end">
+                    {icon}
+                  </InputAdornment>
+                )}
+              />
             )}
           />
           {!!errors[_name] && <FormHelperText id={`${_name}-error`}>{errorMessage}</FormHelperText>}
@@ -60,4 +71,4 @@ export const InputText: React.FC<InputTextProps<any>> = ({ className, name, labe
   )
 }
 
-export default InputText
+export default InputMasked

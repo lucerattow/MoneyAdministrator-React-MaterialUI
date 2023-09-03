@@ -1,0 +1,17 @@
+@import "@/styles/index.scss";
+
+// evito que al seleccionar un item, su contenido se vea desalineado horizontalmente
+.selected div {
+  display: flex;
+  align-items: center;
+}
+.menu_item {
+  display: flex;
+  align-items: center;
+
+  &_image {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}

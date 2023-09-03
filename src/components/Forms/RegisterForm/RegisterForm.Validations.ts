@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 // Definicion de tipos para los datos del formulario
-export interface IFormInput {
+export interface RegisterFormInput {
   email: string
   password: string
   confirmPassword: string
@@ -9,7 +9,7 @@ export interface IFormInput {
 }
 
 // Esquema de validación con yup
-export const validationSchema = yup.object<IFormInput>().shape({
+export const validationSchema = yup.object<RegisterFormInput>().shape({
   email: yup.string()
     .email('Correo electrónico inválido')
     .required('El correo electrónico es requerido'),

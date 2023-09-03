@@ -26,6 +26,8 @@ import IconButton from '@mui/material/IconButton';
 export type SummaryListFolderProps = {
 }
 
+const items: string[] = ["1", "2", "3", "4", "5", "6", "7"]
+
 export const SummaryListFolder: React.FC<SummaryListFolderProps> = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -36,119 +38,25 @@ export const SummaryListFolder: React.FC<SummaryListFolderProps> = () => {
   return (
     <>
       <ListItemButton onClick={toggleOpen}>
-        <ListItemIcon>
-          <FolderIcon />
-        </ListItemIcon>
-        <ListItemText primary="Año ----" />
+        <FolderIcon className={styles.icon} />
+        <ListItemText primary="Año 2023" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
-
-        <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText primary="Resumen --/----" />
-          <ListItemSecondaryAction className={styles.action_icons}>
-            <IconButton onClick={() => console.log("edit")}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log("delete")}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-
-        <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText primary="Resumen --/----" />
-          <ListItemSecondaryAction className={styles.action_icons}>
-            <IconButton onClick={() => console.log("edit")}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log("delete")}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-
-        <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText primary="Resumen --/----" />
-          <ListItemSecondaryAction className={styles.action_icons}>
-            <IconButton onClick={() => console.log("edit")}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log("delete")}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-
-        <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText primary="Resumen --/----" />
-          <ListItemSecondaryAction className={styles.action_icons}>
-            <IconButton onClick={() => console.log("edit")}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log("delete")}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-
-        <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText primary="Resumen --/----" />
-          <ListItemSecondaryAction className={styles.action_icons}>
-            <IconButton onClick={() => console.log("edit")}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log("delete")}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-
-        <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText primary="Resumen --/----" />
-          <ListItemSecondaryAction className={styles.action_icons}>
-            <IconButton onClick={() => console.log("edit")}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log("delete")}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-
-        <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
-          <ListItemIcon>
-            <DescriptionIcon />
-          </ListItemIcon>
-          <ListItemText primary="Resumen --/----" />
-          <ListItemSecondaryAction className={styles.action_icons}>
-            <IconButton onClick={() => console.log("edit")}>
-              <EditOutlinedIcon />
-            </IconButton>
-            <IconButton color="primary" onClick={() => console.log("delete")}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-
+        {items.map(() => (
+          <ListItem className={styles.list_item} onClick={() => console.log("click en el resumen")}>
+            <DescriptionIcon className={styles.icon} />
+            <ListItemText primary="Resumen 10/2020" />
+            <ListItemSecondaryAction className={styles.action_icons}>
+              <IconButton onClick={() => console.log("edit")}>
+                <EditOutlinedIcon />
+              </IconButton>
+              <IconButton color="error" onClick={() => console.log("delete")}>
+                <DeleteOutlineOutlinedIcon />
+              </IconButton>
+            </ListItemSecondaryAction>
+          </ListItem>
+        ))}
       </Collapse>
     </>
   )

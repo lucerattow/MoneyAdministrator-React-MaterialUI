@@ -15,6 +15,7 @@ import {
 } from '@mui/icons-material'
 
 type InputPasswordProps<T extends FieldValues> = {
+  className?: string
   name: keyof T;
   label: string;
   control: Control<T>;
@@ -24,7 +25,7 @@ type InputPasswordProps<T extends FieldValues> = {
   autoComplete?: string;
 };
 
-export const InputPassword: React.FC<InputPasswordProps<any>> = ({ name, label, control, errors, defaultValue = "", autoFocus = false, autoComplete = "" }) => {
+export const InputPassword: React.FC<InputPasswordProps<any>> = ({ className, name, label, control, errors, defaultValue = "", autoFocus = false, autoComplete = "" }) => {
   const [show, setShow] = React.useState<boolean>(false)
   const errorMessage = errors[name as string]?.message as string
   const _name = name as string
@@ -41,6 +42,7 @@ export const InputPassword: React.FC<InputPasswordProps<any>> = ({ name, label, 
       defaultValue={defaultValue}
       render={({ field }) => (
         <FormControl
+          className={className}
           margin="dense"
           error={!!errors[_name]}
           variant="standard"

@@ -11,4 +11,18 @@
   .container {
     padding: 8px 16px;
   }
+
+  .form {
+    width: 330px;
+
+    .input {
+      &_numbers {
+        margin-left: 5px;
+      }
+    }
+
+    .button {
+      margin-top: 8px;
+    }
+  }
 }

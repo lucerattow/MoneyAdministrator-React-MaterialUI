@@ -33,9 +33,9 @@ export const TableCreditCardSummaryDetails: React.FC<TableCreditCardSummaryDetai
         <TableBody>
           {Array.from({ length: 10 }).map((_, index) => (
             <TableRow key={index} className={styles.table_row} >
-              <TableCell>----/--/--</TableCell>
+              <TableCell>2023/03/03</TableCell>
               <TableCell>Descripcion del gasto loco</TableCell>
-              <TableCell>--/--</TableCell>
+              <TableCell>01/03</TableCell>
               <TableCell align='right'>99.999,00 $</TableCell>
               <TableCell align='right'>9,00 $</TableCell>
             </TableRow>

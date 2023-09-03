@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from "react-router-dom"
 import { yupResolver } from '@hookform/resolvers/yup';
 // recursos locales
@@ -8,45 +8,24 @@ import { useAppContext } from '@/hooks'
 import { userRegister } from "@/api"
 // componentes
 import {
-  Input,
-  InputLabel,
-  FormHelperText,
-  FormControl,
-  InputAdornment,
-  IconButton,
-} from '@mui/material';
-import {
   LoadingButton
 } from "@mui/lab"
-import {
-  Visibility,
-  VisibilityOff
-} from '@mui/icons-material';
 import {
   InputText,
   InputPassword
 } from "@/components"
 // logica del componente
-import { IFormInput, validationSchema } from "./RegisterForm.Validations"
+import { RegisterFormInput, validationSchema } from "./RegisterForm.Validations"
 
 export const RegisterForm = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = React.useState<boolean>(false)
   const navigate = useNavigate()
   const { setUser } = useAppContext()
-  const { control, handleSubmit, formState: { errors } } = useForm<IFormInput>({
+  const { control, handleSubmit, formState: { errors } } = useForm<RegisterFormInput>({
     resolver: yupResolver(validationSchema),
   });
 
-  const onClickShowPassword = () => setShowPassword(!showPassword);
-  const onClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
-
-  const onMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  };
-
-  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+  const onSubmit: SubmitHandler<RegisterFormInput> = async (data) => {
     setLoading(true)
     const loggedUser = await userRegister(data.email, data.password, data.displayName)
     if (loggedUser) {
